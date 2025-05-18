@@ -9,9 +9,9 @@ This project implements secure video steganography by encrypting a secret image 
 - Dyo Bukit (122140145)
 - Gabriela Rumapea (122140056)
 
-## Course Information
-- Course: Cryptography
-- Lecturer: Ratna Aisuwarya, M.Eng
+## Mata Kuliah
+- Kriptografi
+- Dosen : Ilham Firman Ashari, S.Kom., M.T.
 
 ## Deskripsi Proyek
 Proyek ini mengimplementasikan teknik steganografi video yang aman dengan menggunakan kombinasi tiga metode:
