@@ -1,10 +1,5 @@
-# Untuk conda environment Python 3.11
-python=3.11
 numpy
 scipy
 pillow
-opencv
-pip
-pip:
-  - opencv-python
-  - cryptography
+opencv-python
+cryptography
