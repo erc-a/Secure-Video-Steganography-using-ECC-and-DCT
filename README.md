@@ -32,30 +32,91 @@ Proyek ini menggabungkan dua metode utama:
 
 ## Instalasi & Persiapan Lingkungan
 
-### 1. Clone Repository
+## Setup Lingkungan Pengembangan
+
+Proyek ini dapat dijalankan menggunakan dua pendekatan environment:
+
+1. **\[Direkomendasikan]** Menggunakan Conda Environment
+2. Menggunakan Virtual Environment bawaan Python (venv)
+
+---
+
+### 🔧 Opsi 1: Menggunakan Conda (Direkomendasikan)
+
+#### 1. Clone Repository
+
 ```bash
 git clone https://github.com/erc-a/Secure-Video-Steganography-using-ECC-and-DCT.git
 cd Secure-Video-Steganography-using-ECC-and-DCT
 ```
 
-### 2. Buat Environment Conda (Python 3.11)
-Disarankan menggunakan Python 3.11 untuk kompatibilitas library.
+#### 2. Buat dan Aktifkan Environment Conda
+
 ```bash
 conda create -n tubes_kripto python=3.11
 conda activate tubes_kripto
 ```
 
-### 3. Install Library yang Dibutuhkan
-Pastikan Anda sudah berada di folder project, lalu jalankan:
+Pastikan Conda telah terinstal. Disarankan menggunakan [Miniconda](https://docs.conda.io/en/latest/miniconda.html) untuk instalasi ringan.
+
+#### 3. Install Dependensi
+
 ```bash
 pip install -r requirements.txt
 ```
-**Library utama yang digunakan:**
-- numpy
-- opencv-python
-- pillow
-- scipy
-- cryptography
+
+Jika file `requirements.txt` tidak tersedia atau error, gunakan:
+
+```bash
+pip install numpy opencv-python pillow scipy cryptography
+```
+
+---
+
+### Opsi 2: Menggunakan Python Virtualenv (Native)
+
+#### 1. Clone Repository
+
+```bash
+git clone https://github.com/erc-a/Secure-Video-Steganography-using-ECC-and-DCT.git
+cd Secure-Video-Steganography-using-ECC-and-DCT
+```
+
+#### 2. Buat dan Aktifkan Virtual Environment
+
+```bash
+python -m venv env
+source env/bin/activate       # Linux/macOS
+.\env\Scripts\activate        # Windows
+```
+
+#### 3. Install Dependensi
+
+```bash
+pip install -r requirements.txt
+```
+
+Atau instal manual jika diperlukan:
+
+```bash
+pip install numpy opencv-python pillow scipy cryptography
+```
+
+---
+
+### Library Utama yang Digunakan
+
+| Library         | Fungsi Utama                                 |
+| --------------- | -------------------------------------------- |
+| `numpy`         | Operasi numerik dan manipulasi array         |
+| `opencv-python` | Pemrosesan video dan ekstraksi frame         |
+| `pillow`        | Pemrosesan dan konversi citra                |
+| `scipy`         | Transformasi DCT (Discrete Cosine Transform) |
+| `cryptography`  | Enkripsi AES-GCM & ECC (Elliptic Curve)      |
+
+---
+
+Setelah environment aktif dan library terinstal, proyek siap dijalankan.
 
 ---
 
@@ -73,7 +134,7 @@ pip install -r requirements.txt
 
 2. **Jalankan program utama:**
    ```bash
-   python main.py
+   python main_with_sha.py
    ```
    - Proses embedding dan ekstraksi akan berjalan otomatis.
    - Hasil video stego dan gambar hasil ekstraksi akan muncul di folder `media/output/`.
@@ -82,7 +143,7 @@ pip install -r requirements.txt
 
 ## Catatan
 - Kunci privat dan publik ECC akan otomatis dibuat jika belum ada.
-- Pastikan semua dependensi sudah terinstall sesuai `requirements.txt`.
+- Pastikan semua dependensi sudah terinstall sesuai `requirements.txt`/`environment.yml`.
 - Untuk penggunaan di luar Windows, pastikan codec video yang digunakan didukung oleh sistem Anda.
 
 ---
