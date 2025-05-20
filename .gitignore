@@ -9,6 +9,7 @@ __pycache__/
 env/
 venv/
 *.env
+venv-kript
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints
@@ -41,3 +42,4 @@ pip-wheel-metadata/
 
 # Log files
 *.log
+tempCodeRunnerFile.py
