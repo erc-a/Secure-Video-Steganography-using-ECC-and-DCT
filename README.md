@@ -41,7 +41,7 @@ Proyek ini dapat dijalankan menggunakan dua pendekatan environment:
 
 ---
 
-### 🔧 Opsi 1: Menggunakan Conda (Direkomendasikan)
+### Opsi 1: Menggunakan Conda (Direkomendasikan)
 
 #### 1. Clone Repository
 
@@ -52,22 +52,20 @@ cd Secure-Video-Steganography-using-ECC-and-DCT
 
 #### 2. Buat dan Aktifkan Environment Conda
 
+Gunakan file `environment.yml` yang telah disediakan untuk membuat environment secara otomatis:
+
 ```bash
-conda create -n tubes_kripto python=3.11
+conda env create -f environment.yml
 conda activate tubes_kripto
 ```
 
 Pastikan Conda telah terinstal. Disarankan menggunakan [Miniconda](https://docs.conda.io/en/latest/miniconda.html) untuk instalasi ringan.
 
-#### 3. Install Dependensi
+Jika ingin membuat environment secara manual:
 
 ```bash
-pip install -r requirements.txt
-```
-
-Jika file `requirements.txt` tidak tersedia atau error, gunakan:
-
-```bash
+conda create -n tubes_kripto python=3.11
+conda activate tubes_kripto
 pip install numpy opencv-python pillow scipy cryptography
 ```
 
@@ -113,10 +111,6 @@ pip install numpy opencv-python pillow scipy cryptography
 | `pillow`        | Pemrosesan dan konversi citra                |
 | `scipy`         | Transformasi DCT (Discrete Cosine Transform) |
 | `cryptography`  | Enkripsi AES-GCM & ECC (Elliptic Curve)      |
-
----
-
-Setelah environment aktif dan library terinstal, proyek siap dijalankan.
 
 ---
 
