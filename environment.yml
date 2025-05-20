@@ -1,0 +1,13 @@
+name: kripto-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - pillow
+  - opencv
+  - pip
+  - pip:
+      - opencv-python
+      - cryptography
