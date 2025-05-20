@@ -3,7 +3,7 @@ import numpy as np
 from scipy.fftpack import dct, idct
 import os
 from PIL import Image
-import helper as steg_helpers
+import helpers as steg_helpers
 
 # Impor untuk AES dan ECC
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
