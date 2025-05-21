@@ -106,24 +106,30 @@ pip install -r requirements.txt
 ## 🗂️ Struktur Folder
 
 ```
-Secure-Video-Steganography/
-├── steg/               # Modul utama (DCT, AES, ECC, helper)
-├── scripts/            # Main script
+Secure-Video-Steganography-using-ECC-and-DCT/
+├── app.py                  # Antarmuka aplikasi (jika ada)
+├── config_and_setup.py    # Konfigurasi dan inisialisasi
+├── embed_process.py       # Proses embedding utama
+├── extract_process.py     # Proses ekstraksi utama
+├── evaluation.py          # Evaluasi dan benchmarking kualitas
+├── environment.yml        # Environment Conda
+├── requirements.txt       # Requirements untuk pip
+├── struktur.txt           # Deskripsi struktur
+├── README.md              # Dokumentasi proyek
+├── .gitignore
 ├── media/
-│   ├── input/          # File input (cover video, secret image)
-│   └── output/         # File output (stego video, extracted image)
-├── keys/               # Kunci ECC yang di-generate otomatis
-└── 1.[previous_ver]/   # Backup versi sebelumnya
+│   ├── input/              # File input (cover video, secret image)
+│   └── output/             # File output (stego video, extracted image)
 ```
 
 ---
 
 ## ▶️ Cara Menjalankan Program
 
-1. **Letakkan file input di `media/input/`**
+1. \*\*Letakkan file input di \*\***`media/input/`**
 
-   * `cover.mp4` — video sebagai cover
-   * `ini_adalah_rahasia_grayscale.png` — gambar rahasia (grayscale)
+   * `cover_1.mp4`, `cover_2.mp4` — video sebagai cover
+   * `image32.png`, `image64.png` — gambar rahasia
 
    ⚠️ Jika file tidak ditemukan:
 
@@ -133,10 +139,10 @@ Secure-Video-Steganography/
 2. **Jalankan program utama**
 
 ```bash
-python scripts/main.py
+python app.py
 ```
 
-3. **Hasil akan muncul di `media/output/`:**
+3. **Hasil akan muncul di ********`media/output/`********:**
 
    * `stego_video_final_output.avi` — video dengan payload disisipkan
    * `extracted_FINAL_secret_image.png` — hasil ekstraksi gambar rahasia
@@ -152,7 +158,7 @@ python scripts/main.py
 
 ## 📌 Catatan Teknis
 
-* Kunci ECC (publik dan privat) akan disimpan di folder `keys/`
+* Kunci ECC (publik dan privat) akan disimpan di folder root
 * File akan di-overwrite jika dijalankan ulang
 * SHA3-256 digunakan untuk integritas gambar setelah dekripsi
 
