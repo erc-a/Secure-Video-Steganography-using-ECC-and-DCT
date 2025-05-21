@@ -1,91 +1,164 @@
 # Secure-Video-Steganography-using-ECC-and-DCT
 
-Proyek ini mengimplementasikan steganografi video yang aman dengan mengenkripsi gambar rahasia menggunakan Elliptic Curve Cryptography (ECC) dan Advanced Encryption Standard (AES), lalu menyisipkannya ke dalam video menggunakan teknik Discrete Cosine Transform (DCT).
-
-## Anggota Kelompok (Kelompok 5 Kelas RB)
-- Eric Arwido Damanik (122140157)
-- Alwi Arfan Solin (122140197)
-- Jhoel Robert Hutagalung (122140174)
-- Andre Tampubolon (122140194)
-- Dyo Bukit (122140145)
-- Gabriela Rumapea (122140056)
-
-## Mata Kuliah
-- Kriptografi
-- Dosen : Ilham Firman Ashari, S.Kom., M.T.
-
-## Deskripsi Proyek
-Proyek ini menggabungkan dua metode utama:
-1. **Elliptic Curve Cryptography (ECC) + AES**
-   - Gambar rahasia dienkripsi menggunakan kunci simetris AES-256.
-   - Kunci AES dihasilkan secara aman melalui pertukaran kunci ECC (ECDH).
-2. **Discrete Cosine Transform (DCT)**
-   - Data gambar yang sudah terenkripsi disisipkan ke dalam frame video pada domain frekuensi menggunakan DCT.
-
-### Fitur Utama
-- Enkripsi gambar rahasia menggunakan kombinasi ECC dan AES.
-- Penyisipan data ke dalam video menggunakan DCT.
-- Ekstraksi dan dekripsi gambar dari video stego.
-- Semua file input berada di `media/input` dan output di `media/output`.
+Proyek ini mengimplementasikan sistem steganografi video yang **aman dan efisien**, dengan mengenkripsi gambar rahasia menggunakan **Elliptic Curve Cryptography (ECC)** dan **Advanced Encryption Standard (AES-GCM)**, lalu menyisipkannya ke dalam frame video menggunakan transformasi frekuensi **Discrete Cosine Transform (DCT)** dengan **Quantization Index Modulation (QIM)**.
 
 ---
 
-## Instalasi & Persiapan Lingkungan
+## 👥 Anggota Kelompok (Kelompok 5 Kelas RB)
 
-### 1. Clone Repository
+* Eric Arwido Damanik (122140157)
+* Alwi Arfan Solin (122140197)
+* Jhoel Robert Hutagalung (122140174)
+* Andre Tampubolon (122140194)
+* Dyo Bukit (122140145)
+* Gabriela Rumapea (122140056)
+
+### Mata Kuliah
+
+**Kriptografi**
+Dosen: *Ilham Firman Ashari, S.Kom., M.T.*
+
+---
+
+## 🔐 Deskripsi Proyek
+
+Proyek ini menggabungkan tiga teknik utama:
+
+1. **Enkripsi Gambar dengan ECC + AES-GCM**
+
+   * Kunci AES 256-bit dihasilkan melalui pertukaran kunci ECC (ECDH).
+   * Gambar rahasia dienkripsi menggunakan AES dalam mode Galois/Counter Mode (GCM).
+
+2. **Transformasi Domain Frekuensi dengan DCT**
+
+   * Setiap frame video diubah ke domain frekuensi menggunakan blok DCT 8x8.
+
+3. **Penyisipan dengan Quantization Index Modulation (QIM)**
+
+   * Bit-bit payload disisipkan ke dalam koefisien AC hasil DCT dengan memodifikasi paritas kuantisasi.
+   * Parameter `delta` dan jumlah koefisien AC yang digunakan dapat dikonfigurasi untuk mengatur kapasitas dan kualitas visual.
+
+---
+
+## ✨ Fitur Utama
+
+* Enkripsi dan autentikasi gambar menggunakan SHA3 + ECC + AES-GCM
+* Embedding data ke dalam video dengan QIM pada koefisien DCT
+* Otomatisasi proses embedding dan ekstraksi
+* Auto-generate file dummy jika input tidak tersedia
+* Struktur modular dan extensible
+
+---
+
+## 🧪 Instalasi & Persiapan Lingkungan
+
+### Opsi 1: Menggunakan Conda (Direkomendasikan)
+
+1. **Clone Repository**
+
 ```bash
 git clone https://github.com/erc-a/Secure-Video-Steganography-using-ECC-and-DCT.git
 cd Secure-Video-Steganography-using-ECC-and-DCT
 ```
 
-### 2. Buat Environment Conda (Python 3.11)
-Disarankan menggunakan Python 3.11 untuk kompatibilitas library.
+2. **Buat dan Aktifkan Environment Conda**
+
 ```bash
-conda create -n tubes_kripto python=3.11
+conda env create -f environment.yml
 conda activate tubes_kripto
 ```
 
-### 3. Install Library yang Dibutuhkan
-Pastikan Anda sudah berada di folder project, lalu jalankan:
+3. **Atau secara manual**
+
 ```bash
+conda create -n tubes_kripto python=3.11
+conda activate tubes_kripto
+pip install numpy opencv-python pillow scipy cryptography
+```
+
+---
+
+### Opsi 2: Menggunakan Virtual Environment (venv)
+
+```bash
+python -m venv env
+# Aktifkan environment:
+source env/bin/activate       # Linux/macOS
+.\env\Scripts\activate        # Windows
+
 pip install -r requirements.txt
 ```
-**Library utama yang digunakan:**
-- numpy
-- opencv-python
-- pillow
-- scipy
-- cryptography
 
 ---
 
-## Struktur Folder
-- `media/input/` : Tempat file input (video cover, gambar rahasia)
-- `media/output/` : Tempat file output (video stego, hasil ekstraksi gambar)
+### 📦 Library Utama
+
+| Library         | Fungsi Utama                              |
+| --------------- | ----------------------------------------- |
+| `numpy`         | Operasi numerik dan manipulasi array      |
+| `opencv-python` | Pemrosesan video dan frame capture        |
+| `pillow`        | Pemrosesan dan konversi citra (PNG, dsb.) |
+| `scipy`         | Transformasi DCT dan proses QIM           |
+| `cryptography`  | AES-GCM, ECC (ECDH), SHA3                 |
 
 ---
 
-## Cara Menjalankan Program
+## 🗂️ Struktur Folder
 
-1. **Siapkan file input:**
-   - Letakkan video cover (misal: `cover.mp4`) dan gambar rahasia (misal: `ini_adalah_rahasia_grayscale.png`) di folder `media/input/`.
-   - Jika file tidak ada, program akan membuat file dummy secara otomatis.
-
-2. **Jalankan program utama:**
-   ```bash
-   python main.py
-   ```
-   - Proses embedding dan ekstraksi akan berjalan otomatis.
-   - Hasil video stego dan gambar hasil ekstraksi akan muncul di folder `media/output/`.
-
----
-
-## Catatan
-- Kunci privat dan publik ECC akan otomatis dibuat jika belum ada.
-- Pastikan semua dependensi sudah terinstall sesuai `requirements.txt`.
-- Untuk penggunaan di luar Windows, pastikan codec video yang digunakan didukung oleh sistem Anda.
+```
+Secure-Video-Steganography/
+├── steg/               # Modul utama (DCT, AES, ECC, helper)
+├── scripts/            # Main script
+├── media/
+│   ├── input/          # File input (cover video, secret image)
+│   └── output/         # File output (stego video, extracted image)
+├── keys/               # Kunci ECC yang di-generate otomatis
+└── 1.[previous_ver]/   # Backup versi sebelumnya
+```
 
 ---
 
-## Lisensi
-Proyek ini hanya untuk keperluan pembelajaran.
+## ▶️ Cara Menjalankan Program
+
+1. **Letakkan file input di `media/input/`**
+
+   * `cover.mp4` — video sebagai cover
+   * `ini_adalah_rahasia_grayscale.png` — gambar rahasia (grayscale)
+
+   ⚠️ Jika file tidak ditemukan:
+
+   * Program akan otomatis membuat `cover.mp4` (video dummy 640x480, 5 detik)
+   * Program akan membuat gambar dummy grayscale 32x32
+
+2. **Jalankan program utama**
+
+```bash
+python scripts/main.py
+```
+
+3. **Hasil akan muncul di `media/output/`:**
+
+   * `stego_video_final_output.avi` — video dengan payload disisipkan
+   * `extracted_FINAL_secret_image.png` — hasil ekstraksi gambar rahasia
+
+---
+
+## 🎥 Catatan Codec
+
+* Format output: `.avi` menggunakan codec **FFV1** (lossless, cross-platform)
+* Pastikan sistem Anda mendukung FFV1 (Linux/macOS mungkin butuh konfigurasi tambahan OpenCV)
+
+---
+
+## 📌 Catatan Teknis
+
+* Kunci ECC (publik dan privat) akan disimpan di folder `keys/`
+* File akan di-overwrite jika dijalankan ulang
+* SHA3-256 digunakan untuk integritas gambar setelah dekripsi
+
+---
+
+## 🧭 Lisensi
+
+Proyek ini dibuat untuk keperluan **pembelajaran** dan tugas akademik.
+Tidak disarankan untuk digunakan dalam aplikasi keamanan nyata tanpa audit menyeluruh.
