@@ -15,11 +15,11 @@ try:
         serialisasi_kunci_publik_ecc_compressed,
         # Fungsi lain akan dipanggil oleh embed_process atau extract_process
     )
+    from embed_process import embed_gambar_ke_video_final
     from extract_process import ekstraksi_gambar_video_final
-    # Impor fungsi evaluasi
-    from evaluation import evaluasi_hasil_steganografi, psnr as hitung_psnr_eval, calc_ssim as hitung_ssim_eval
-except ImportError as e:
     from evaluation import psnr as hitung_psnr_eval, calc_ssim as hitung_ssim_eval
+except ImportError as e:
+    error_message = f"Modul tidak ditemukan: {e}"
     print(f"[ERROR IMPOR MODUL] {error_message}")
     try:
         root_err = tk.Tk(); root_err.withdraw()
