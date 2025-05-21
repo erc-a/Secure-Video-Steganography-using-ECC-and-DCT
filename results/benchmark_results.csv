@@ -1,9 +1,0 @@
-# Benchmark Results - 2025-05-21 17:59:02
-Kategori,Metode,Nilai,Catatan
-Kriptografi,ECC Key Generation,0.000081 detik,rata-rata 500 iterasi
-Kriptografi,ECC Brute-force Estimate,2^128,~8.76e+26 tahun
-Kriptografi,AES Encrypt,0.000627 detik,1024-byte payload
-Kriptografi,AES Decrypt,0.000030 detik,1024-byte payload
-Steganografi,PSNR,43.14 dB,frame pertama (grayscale)
-Steganografi,Capacity,12000 bit/frame,"resolusi: 320x240, 10 AC/block"
-Steganografi,Robustness,N/A,perlu pengujian re-encode/cropping manual
