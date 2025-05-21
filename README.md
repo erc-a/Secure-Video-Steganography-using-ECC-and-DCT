@@ -107,7 +107,7 @@ pip install -r requirements.txt
 
 ```
 Secure-Video-Steganography-using-ECC-and-DCT/
-├── app.py                  # Antarmuka aplikasi (jika ada)
+├── app.py                  # Antarmuka aplikasi
 ├── config_and_setup.py    # Konfigurasi dan inisialisasi
 ├── embed_process.py       # Proses embedding utama
 ├── extract_process.py     # Proses ekstraksi utama
