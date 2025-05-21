@@ -37,9 +37,10 @@ lib64/
 pip-wheel-metadata/
 
 # Media output/input (optional, uncomment if you don't want to track media files)
-media/input/
-media/output/
+# media/input/
+# media/output/
 
 # Log files
 *.log
 tempCodeRunnerFile.py
+struktur.txt
